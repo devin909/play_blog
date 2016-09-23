@@ -1,0 +1,46 @@
+@import service.UserProvider
+@(userProvider: UserProvider)
+
+@main(userProvider, Messages("playauthenticate.index.title")) {
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h3>@Messages("playauthenticate.index.intro")</h3>
+        <p>@Messages("playauthenticate.index.intro_2") <br/>@Messages("playauthenticate.index.intro_3")</p>
+      </div>
+
+      <div class="row">
+            <div class="box">
+                <div class="col-lg-12">
+                    <hr>
+                    <h2 class="intro-text text-center">Build a website
+                        <strong>worth visiting</strong>
+                    </h2>
+                    <hr>
+                    <img class="img-responsive img-border img-left" src="assets/images/intro-pic.jpg" alt="">
+                    <hr class="visible-xs">
+                    <p>The boxes used in this template are nested inbetween a normal Bootstrap row and the start of your column layout. The boxes will be full-width boxes, so if you want to make them smaller then you will need to customize.</p>
+                    <p>A huge thanks to <a href="http://join.deathtothestockphoto.com/" target="_blank">Death to the Stock Photo</a> for allowing us to use the beautiful photos that make this template really come to life. When using this template, make sure your photos are decent. Also make sure that the file size on your photos is kept to a minumum to keep load times to a minimum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc placerat diam quis nisl vestibulum dignissim. In hac habitasse platea dictumst. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                </div>
+            </div>
+        </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-xs-6 col-sm-4">
+          <h2>@Messages("playauthenticate.index.heading")</h2>
+           <p>Cupcake ipsum dolor sit amet. Pastry pie powder biscuit bear claw. Jelly-o chocolate bar sweet roll sugar plum chocolate. Biscuit brownie chupa chups macaroon ice cream halvah sugar plum oat cake ice cream.</p>
+          <p><a class="btn" href="#">@Messages("playauthenticate.index.details") &raquo;</a></p>
+        </div>
+        <div class="col-xs-6 col-sm-4">
+          <h2>@Messages("playauthenticate.index.heading")</h2>
+           <p>Applicake macaroon caramels gummi bears pastry. Cake liquorice carrot cake chocolate lollipop dessert. Halvah fruitcake marshmallow pie gummi bears pie marzipan.</p>
+          <p><a class="btn" href="#">@Messages("playauthenticate.index.details") &raquo;</a></p>
+       </div>
+        <div class="col-xs-6 col-sm-4">
+          <h2>@Messages("playauthenticate.index.heading")</h2>
+          <p>Wafer halvah jujubes lollipop liquorice jelly-o pastry. Pie halvah toffee. Candy canes donut sugar plum. Chocolate cake powder tart liquorice cotton candy pudding sweet.</p>
+          <p><a class="btn" href="#">@Messages("playauthenticate.index.details") &raquo;</a></p>
+        </div>
+      </div>
+    }

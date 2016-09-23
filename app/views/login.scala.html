@@ -1,0 +1,91 @@
+@import service.UserProvider
+@(playAuth: com.feth.play.module.pa.PlayAuthenticate, userProvider: UserProvider, loginForm: Form[_])
+
+@import helper._
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapBasic.f) }
+@import com.feth.play.module.pa.views.html._
+
+@main(userProvider, Messages("playauthenticate.login.title"),"login") {
+
+  <div class="row">
+    <div class="col-xs-6 col-sm-4">
+      <h1>@Messages("playauthenticate.login.title")</h1>
+    </div>
+  </div>
+
+  <div id="login" class="row">
+    <div class="box">
+    <div class="col-xs-6 col-sm-4">
+      @* Display proprietary login form *@
+    	@helper.form(routes.Application.doLogin, 'class -> "form-horizontal", 'role -> "form") {
+
+        @if(loginForm.hasGlobalErrors) {
+          	<p class="alert alert-danger">
+	          @loginForm.globalError.message
+	     	</p>
+        }
+
+        @_emailPartial(loginForm)
+
+        @inputPassword(
+          loginForm("password"),
+          '_showConstraints -> false,
+          '_label -> Messages("playauthenticate.login.password.placeholder")
+        )
+
+            <button type="submit" class="btn btn-default">@Messages("playauthenticate.login.now")</button>
+
+        <a href="javascript:void(0);" onclick="window.location.href = jsRoutes.controllers.Signup.forgotPassword($('#email').val() || null).absoluteURL();">@Messages("playauthenticate.login.forgot.password")</a>
+
+    	}
+    </div>
+
+   <div class="col-xs-6 col-sm-4">
+      @Messages("playauthenticate.login.oauth")
+      @* Display list of available providers *@
+      @_providerPartial(playAuth, skipCurrent=false)
+      @providerAvailable("basic") { available: Boolean =>
+          @if(available) {
+              <br>
+              <a href="@com.feth.play.module.pa.controllers.routes.Authenticate.authenticate("basic")">@Messages("playauthenticate.login.basic")</a>
+          }
+      }
+    </div>
+    </div>
+  </div>
+
+  <div class="container">
+        <div class="box">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Sign In</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form role="form">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="E-mail" name="email" type="email" autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Password" name="password" type="password" value="">
+                                </div>
+                                <div class="checkbox">
+                                    <label>
+                                        <input name="remember" type="checkbox" value="Remember Me">Remember Me
+                                    </label>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <a href="index.html" class="btn btn-lg btn-success btn-block">Login</a>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+}
+
